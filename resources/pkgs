@@ -18,12 +18,13 @@ exfatprogs
 fastfetch
 fd
 ffmpeg
-firewalld
 flatpak
 fuse2
 fzf
 ghostty
 git
+go
+gopls
 gptfdisk
 grim
 grub
@@ -48,6 +49,7 @@ nodejs
 noto-fonts
 ntfs-3g
 openssh
+openvpn
 pacman-contrib
 pavucontrol
 pipewire
@@ -56,7 +58,6 @@ pipewire-jack
 pipewire-pulse
 polkit-gnome
 power-profiles-daemon
-proton-vpn-gtk-app
 pyright
 python-pip
 qemu-full
