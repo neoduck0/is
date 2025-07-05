@@ -43,17 +43,16 @@ sed -i 's|# deny = 3|deny = 5|' /etc/security/faillock.conf
 
 if [ $server = true ]; then
     pacman -S --needed --noconfirm $(tr '\n' ' ' < resources/pkgs-server)
-    systemctl enable ufw
 elif [ $server = false ]; then
     pacman -S --needed --noconfirm $(tr '\n' ' ' < resources/pkgs)
     systemctl enable bluetooth
-    systemctl enable firewalld
     systemctl enable libvirtd.socket
 
     cp ./resources/keyd.conf /etc/keyd/default.conf
     systemctl enable keyd
     keyd reload
 fi
+systemctl enable $firewall
 systemctl enable NetworkManager
 
 if [ $bat_cap = true ]; then

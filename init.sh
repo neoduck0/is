@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# ufw or firewalld
+firewall=
+
 # true or false
 server=
 bat_cap=
@@ -46,6 +49,11 @@ for var in server bat_cap dotfiles omz yay; do
         exit 1
     fi
 done
+
+if [[ -z "$firewall" || ! "$firewall" =~ ^(firewalld|ufw)$ ]]; then
+    echo "Variable firewall is unset or set uncorrectly"
+    exit 1
+fi
 
 for var in region city user user_pass root_pass disk_label disk; do
     if [[ -z "${!var}" ]]; then
