@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# gpt or mbr
+disk_label=
+
 # ufw or firewalld
 firewall=
 
@@ -10,17 +13,13 @@ dotfiles=
 omz=
 yay=
 
-# eg. Asia
 region=
-# eg. Bangkok
 city=
 
 user=
 user_pass=
 root_pass=
 
-# gpt or mbr
-disk_label=
 # eg. sda, vda, nvme0n1
 disk=
 
@@ -43,6 +42,16 @@ elif [ $disk_label = mbr ]; then
     fi
 fi
 
+if [[ -z "$disk_label" || ! "$disk_label" =~ ^(gpt|mbr)$ ]]; then
+    echo "Variable disk_label is unset or set uncorrectly"
+    exit 1
+fi
+
+if [[ -z "$firewall" || ! "$firewall" =~ ^(ufw|firewalld)$ ]]; then
+    echo "Variable firewall is unset or set uncorrectly"
+    exit 1
+fi
+
 for var in server bat_cap dotfiles omz yay; do
     if [[ -z "${!var}" || ! "${!var}" =~ ^(true|false)$ ]]; then
         echo "Variable $var is unset or set uncorrectly"
@@ -50,12 +59,7 @@ for var in server bat_cap dotfiles omz yay; do
     fi
 done
 
-if [[ -z "$firewall" || ! "$firewall" =~ ^(firewalld|ufw)$ ]]; then
-    echo "Variable firewall is unset or set uncorrectly"
-    exit 1
-fi
-
-for var in region city user user_pass root_pass disk_label disk; do
+for var in region city user user_pass root_pass disk; do
     if [[ -z "${!var}" ]]; then
         echo "Variable $var is unset or set uncorrectly"
         exit 1
