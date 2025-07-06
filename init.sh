@@ -6,23 +6,21 @@ disk_label=gpt
 # ufw|firewalld
 firewall=ufw
 
+# Leave empty to disable
+dotfiles_repo=https://github.com/neoduck0/dotfiles.git
+disk_pass=
+
 server=false
 ideapad_bat_cap=false
-dotfiles=true
 omz=true
 yay=true
-
 region=Asia
 city=Bangkok
-
 user=a
 user_pass=
 root_pass=
-
 disk=nvme0n1
 
-# Leave empty for no disk encryption
-disk_pass=
 
 if [ $disk_label = gpt ]; then
     if [ $disk = nvme0n1 ]; then
@@ -50,7 +48,7 @@ if [[ -z "$firewall" || ! "$firewall" =~ ^(ufw|firewalld)$ ]]; then
     exit 1
 fi
 
-for var in server ideapad_bat_cap dotfiles omz yay; do
+for var in server ideapad_bat_cap omz yay; do
     if [[ -z "${!var}" || ! "${!var}" =~ ^(true|false)$ ]]; then
         echo "Variable $var is unset or set uncorrectly"
         exit 1

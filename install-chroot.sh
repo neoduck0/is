@@ -58,9 +58,9 @@ if [ $ideapad_bat_cap = true ]; then
     echo 1 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
 fi
 
-if [ $dotfiles = true ]; then
+if [ $dotfiles_repo ]; then
     mkdir /home/$user/Projects
-    git clone https://github.com/neoduck0/dotfiles.git /home/$user/Projects/dotfiles
+    git clone $dotfiles_repo /home/$user/Projects/dotfiles
     chown -R $user:$user /home/$user/Projects
     su --session-command="/home/$user/Projects/dotfiles/install.sh" $user
 fi
