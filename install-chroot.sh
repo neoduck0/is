@@ -52,6 +52,14 @@ elif [ $server = false ]; then
     keyd reload
 fi
 systemctl enable $firewall
+if [ $firewall = ufw ]; then
+    ufw limit 22/tcp
+    ufw allow 80/tcp
+    ufw allow 443/tcp
+    ufw default deny incoming
+    ufw default allow outgoing
+    ufw enable
+fi
 systemctl enable NetworkManager
 
 if [ $ideapad_bat_cap = true ]; then
