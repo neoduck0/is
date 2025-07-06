@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-# gpt or mbr
+# gpt|mbr
 disk_label=gpt
 
-# ufw or firewalld
+# ufw|firewalld
 firewall=ufw
 
-# true or false
 server=false
 bat_cap=false
 dotfiles=true
@@ -20,7 +19,6 @@ user=a
 user_pass=
 root_pass=
 
-# eg. sda, vda, nvme0n1
 disk=nvme0n1
 
 # Leave empty for no disk encryption
