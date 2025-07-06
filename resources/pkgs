@@ -9,8 +9,8 @@ bluez-utils
 brightnessctl
 btop
 btrfs-progs
+ccls
 cliphist
-cmus
 dmidecode
 dnsmasq
 dosfstools
@@ -20,8 +20,6 @@ fd
 ffmpeg
 flatpak
 fuse2
-fzf
-ghostty
 git
 go
 gopls
@@ -37,6 +35,7 @@ hyprpicker
 imagemagick
 intel-ucode
 keyd
+kitty
 linux
 linux-firmware
 lua-language-server
@@ -47,6 +46,7 @@ neovim
 networkmanager
 nodejs
 noto-fonts
+noto-fonts-emoji
 ntfs-3g
 openssh
 openvpn
@@ -82,6 +82,7 @@ usbutils
 uwsm
 virt-manager
 vlc
+vlc-plugins-all
 vulkan-icd-loader
 vulkan-intel
 waybar
