@@ -55,7 +55,7 @@ fi
 systemctl enable $firewall
 systemctl enable NetworkManager
 
-if [ $bat_cap = true ]; then
+if [ $ideapad_bat_cap = true ]; then
     echo 1 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
 fi
 

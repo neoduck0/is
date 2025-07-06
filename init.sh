@@ -7,7 +7,7 @@ disk_label=gpt
 firewall=ufw
 
 server=false
-bat_cap=false
+ideapad_bat_cap=false
 dotfiles=true
 omz=true
 yay=true
@@ -50,7 +50,7 @@ if [[ -z "$firewall" || ! "$firewall" =~ ^(ufw|firewalld)$ ]]; then
     exit 1
 fi
 
-for var in server bat_cap dotfiles omz yay; do
+for var in server ideapad_bat_cap dotfiles omz yay; do
     if [[ -z "${!var}" || ! "${!var}" =~ ^(true|false)$ ]]; then
         echo "Variable $var is unset or set uncorrectly"
         exit 1
