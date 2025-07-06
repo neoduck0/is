@@ -19,7 +19,6 @@ if [ $disk_pass ]; then
     uuid=$(blkid -s UUID -o value /dev/$root_part)
     insert_line="cryptdevice=UUID=$uuid:root root=/dev/mapper/root"
     sed -i 's|block filesystems|block encrypt filesystems|' /etc/mkinitcpio.conf
-    mkinitcpio -p linux
     sed -i "s|quiet|quiet $insert_line|" /etc/default/grub
 fi
 
