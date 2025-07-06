@@ -42,8 +42,6 @@ cp -r ../install-scripts /mnt/root/install-scripts
 
 arch-chroot /mnt "/root/install-scripts/install-chroot.sh"
 
-rm -rf /mnt/root/install-scripts
-
 echo
 echo "installation complete"
 exit 0

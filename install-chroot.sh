@@ -79,6 +79,9 @@ if [ $yay = true ]; then
     rm -rf /home/$user/yay
 fi
 
+cd
+rm -rf /root/install-scripts
+
 echo
 echo "chroot script finished"
 exit 0
