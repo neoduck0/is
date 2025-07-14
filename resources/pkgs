@@ -11,8 +11,11 @@ btop
 btrfs-progs
 ccls
 cliphist
+curl
 dmidecode
 dnsmasq
+docker
+docker-compose
 dosfstools
 exfatprogs
 fastfetch
@@ -72,9 +75,9 @@ slurp
 snapshot
 sof-firmware
 spice-vdagent
+sudo
 swtpm
 termdown
-tree
 ttf-jetbrains-mono-nerd
 udisks2
 unzip
