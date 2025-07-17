@@ -62,10 +62,6 @@ if [ $firewall = ufw ]; then
 fi
 systemctl enable NetworkManager
 
-if [ $ideapad_bat_cap = true ]; then
-    echo 1 > /sys/bus/platform/drivers/ideapad_acpi/VPC2004:00/conservation_mode
-fi
-
 if [ $dotfiles_repo ]; then
     mkdir /home/$user/Projects
     git clone $dotfiles_repo /home/$user/Projects/dotfiles

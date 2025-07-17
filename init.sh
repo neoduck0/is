@@ -11,7 +11,6 @@ dotfiles_repo=https://github.com/neoduck0/dotfiles.git
 disk_pass=
 
 server=false
-ideapad_bat_cap=false
 omz=true
 yay=true
 region=Asia
@@ -48,7 +47,7 @@ if [[ -z "$firewall" || ! "$firewall" =~ ^(ufw|firewalld)$ ]]; then
     exit 1
 fi
 
-for var in server ideapad_bat_cap omz yay; do
+for var in server omz yay; do
     if [[ -z "${!var}" || ! "${!var}" =~ ^(true|false)$ ]]; then
         echo "Variable $var is unset or set uncorrectly"
         exit 1
