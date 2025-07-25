@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 # gpt|mbr
-disk_label=gpt
+if [ -d "/sys/firmware/efi" ]; then
+    disk_label="gpt"
+else
+    disk_label="mbr"
+fi
 
 # ufw|firewalld
 firewall=ufw
