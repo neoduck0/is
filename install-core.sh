@@ -16,15 +16,10 @@ elif [ $disk_label = mbr ]; then
     parted /dev/sda mkpart primary ext4 0% 100% --script
 fi
 
-if [ $disk_pass ]; then
-    echo -n "$disk_pass" | cryptsetup luksFormat --batch-mode /dev/$root_part
-    echo -n "$disk_pass" | cryptsetup luksOpen --batch-mode /dev/$root_part root
-    mkfs.ext4 /dev/mapper/root -F
-    mount /dev/mapper/root /mnt
-else
-    mkfs.ext4 /dev/$root_part -F
-    mount /dev/$root_part /mnt
-fi
+echo -n "$disk_pass" | cryptsetup luksFormat --batch-mode /dev/$root_part
+echo -n "$disk_pass" | cryptsetup luksOpen --batch-mode /dev/$root_part root
+mkfs.ext4 /dev/mapper/root -F
+mount /dev/mapper/root /mnt
 
 pacman -Syy
 

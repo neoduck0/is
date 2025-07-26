@@ -7,9 +7,6 @@ else
     disk_label="mbr"
 fi
 
-# Leave empty to disable
-disk_pass=
-
 server=false
 omz=true
 yay=true
@@ -21,6 +18,7 @@ user=a
 user_pass=
 root_pass=
 disk=nvme0n1
+disk_pass=
 
 
 if [ $disk_label = gpt ]; then
@@ -51,7 +49,7 @@ for var in server omz yay; do
     fi
 done
 
-for var in timezone user user_pass root_pass disk; do
+for var in timezone user user_pass root_pass disk disk_pass; do
     if [[ -z "${!var}" ]]; then
         echo "Variable $var is unset or set uncorrectly"
         exit 1
