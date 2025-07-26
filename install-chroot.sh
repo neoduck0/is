@@ -34,11 +34,7 @@ pacman -Syu
 sed -i 's|# %wheel ALL=(ALL:ALL) ALL|%wheel ALL=(ALL:ALL) ALL|' /etc/sudoers
 sed -i 's|# deny = 3|deny = 5|' /etc/security/faillock.conf
 
-if [ $server = true ]; then
-    pacman -S --needed --noconfirm $(tr '\n' ' ' < resources/pkgs-server)
-elif [ $server = false ]; then
-    pacman -S --needed --noconfirm $(tr '\n' ' ' < resources/pkgs)
-fi
+pacman -S --needed --noconfirm $(tr '\n' ' ' < resources/pkgs)
 
 if pacman -Q bluez &> /dev/null; then
     systemctl enable bluetooth

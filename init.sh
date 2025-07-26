@@ -7,7 +7,6 @@ else
     disk_label="mbr"
 fi
 
-server=false
 omz=true
 yay=true
 timezone=$(curl -s https://ipinfo.io/timezone)
