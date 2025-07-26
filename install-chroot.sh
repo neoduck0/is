@@ -38,9 +38,17 @@ if [ $server = true ]; then
     pacman -S --needed --noconfirm $(tr '\n' ' ' < resources/pkgs-server)
 elif [ $server = false ]; then
     pacman -S --needed --noconfirm $(tr '\n' ' ' < resources/pkgs)
-    systemctl enable bluetooth
-    systemctl enable libvirtd.socket
+fi
 
+if pacman -Q bluez &> /dev/null; then
+    systemctl enable bluetooth
+fi
+
+if pacman -Q libvirt &> /dev/null; then
+    systemctl enable libvirtd.socket
+fi
+
+if pacman -Q keyd &> /dev/null; then
     cp ./resources/keyd.conf /etc/keyd/default.conf
     systemctl enable keyd
     keyd reload
@@ -60,7 +68,9 @@ if pacman -Q ufw &> /dev/null; then
     ufw enable
 fi
 
-systemctl enable NetworkManager
+if pacman -Q networkmanager &> /dev/null; then
+    systemctl enable NetworkManager
+fi
 
 if [ $omz = true ]; then
     su --session-command='sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"' $user
