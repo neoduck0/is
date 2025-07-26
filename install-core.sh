@@ -40,6 +40,10 @@ genfstab -U /mnt > /mnt/etc/fstab
 
 cp -r ../install-scripts /mnt/root/install-scripts
 
+echo "root:$root_pass" | chpasswd --root /mnt
+useradd -mG wheel $user --root /mnt
+echo "$user:$user_pass" | chpasswd --root /mnt
+
 arch-chroot /mnt "/root/install-scripts/install-chroot.sh"
 
 echo

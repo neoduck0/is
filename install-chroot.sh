@@ -22,7 +22,6 @@ if [ $disk_pass ]; then
     sed -i "s|quiet|quiet $insert_line|" /etc/default/grub
 fi
 
-echo "root:$root_pass" | chpasswd
 
 if [ $disk_label = gpt ]; then
     grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
@@ -33,9 +32,6 @@ fi
 grub-mkconfig -o /boot/grub/grub.cfg
 
 pacman -Syu
-
-useradd -mG wheel $user
-echo "$user:$user_pass" | chpasswd
 
 sed -i 's|# %wheel ALL=(ALL:ALL) ALL|%wheel ALL=(ALL:ALL) ALL|' /etc/sudoers
 sed -i 's|# deny = 3|deny = 5|' /etc/security/faillock.conf
