@@ -13,8 +13,10 @@ disk_pass=
 server=false
 omz=true
 yay=true
-region=Asia
-city=Bangkok
+timezone=$(curl -s https://ipinfo.io/timezone)
+if [ ! -f "/usr/share/zoneinfo/$timezone" ]; then
+    timezone="UTC"
+fi
 user=a
 user_pass=
 root_pass=
@@ -49,7 +51,7 @@ for var in server omz yay; do
     fi
 done
 
-for var in region city user user_pass root_pass disk; do
+for var in timezone user user_pass root_pass disk; do
     if [[ -z "${!var}" ]]; then
         echo "Variable $var is unset or set uncorrectly"
         exit 1

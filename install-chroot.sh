@@ -6,7 +6,7 @@ cd $(dirname $0)
 
 source init.sh
 
-ln -sf /usr/share/zoneinfo/$region/$city /etc/localtime
+ln -sf /usr/share/zoneinfo/$timezone /etc/localtime
 hwclock --systohc
 
 sed -i 's|#en_US.UTF-8|en_US.UTF-8|' /etc/locale.gen
