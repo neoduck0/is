@@ -7,9 +7,6 @@ else
     disk_label="mbr"
 fi
 
-# ufw|firewalld
-firewall=ufw
-
 # Leave empty to disable
 dotfiles_repo=https://github.com/neoduck0/dotfiles.git
 disk_pass=
@@ -43,11 +40,6 @@ fi
 
 if [[ -z "$disk_label" || ! "$disk_label" =~ ^(gpt|mbr)$ ]]; then
     echo "Variable disk_label is unset or set uncorrectly"
-    exit 1
-fi
-
-if [[ -z "$firewall" || ! "$firewall" =~ ^(ufw|firewalld)$ ]]; then
-    echo "Variable firewall is unset or set uncorrectly"
     exit 1
 fi
 

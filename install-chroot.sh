@@ -51,8 +51,13 @@ elif [ $server = false ]; then
     systemctl enable keyd
     keyd reload
 fi
-systemctl enable $firewall
-if [ $firewall = ufw ]; then
+
+if pacman -Q firewalld &> /dev/null; then
+    systemctl enable firewalld
+fi
+
+if pacman -Q ufw &> /dev/null; then
+    systemctl enable ufw
     ufw limit 22/tcp
     ufw allow 80/tcp
     ufw allow 443/tcp
@@ -60,6 +65,7 @@ if [ $firewall = ufw ]; then
     ufw default allow outgoing
     ufw enable
 fi
+
 systemctl enable NetworkManager
 
 if [ $dotfiles_repo ]; then
