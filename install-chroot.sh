@@ -68,13 +68,6 @@ fi
 
 systemctl enable NetworkManager
 
-if [ $dotfiles_repo ]; then
-    mkdir /home/$user/Projects
-    git clone $dotfiles_repo /home/$user/Projects/dotfiles
-    chown -R $user:$user /home/$user/Projects
-    su --session-command="/home/$user/Projects/dotfiles/install.sh" $user
-fi
-
 if [ $omz = true ]; then
     su --session-command='sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"' $user
 fi

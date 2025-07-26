@@ -8,7 +8,6 @@ else
 fi
 
 # Leave empty to disable
-dotfiles_repo=https://github.com/neoduck0/dotfiles.git
 disk_pass=
 
 server=false
